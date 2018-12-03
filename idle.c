@@ -51,14 +51,12 @@ _idle_handler( int nSignal ) {
 
     switch( nSignal ) {
         case SIGALRM:
-            if( ( _pIdle->Flags & F_TRIGGER ) == 0 ) 
-                _pIdle->Flags |= F_TRIGGER;
+            _pIdle->Flags |= F_TRIGGER;
             break;
 
         case SIGINT:
         case SIGTERM:
-            if( _pIdle != NULL ) 
-                _pIdle->Flags |= F_EXIT;
+            _pIdle->Flags |= F_EXIT;
             break;
 
         case SIGCHLD:
